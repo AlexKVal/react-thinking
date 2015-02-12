@@ -7,3 +7,34 @@ var data = [
   {category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7"}
 ];
 
+var FilterableProductTable = React.createClass({
+  render: function() {
+    return (
+      <div className="filterableProductTable">
+        <SearchBar />
+        ProductTable
+      </div>
+    );
+  }
+});
+
+var SearchBar = React.createClass({
+  render: function() {
+    return (
+      <div className="searchBar">
+        <form>
+          <input type="text" placeholder="Search..." />
+          <div className="roundedOne">
+            <input type="checkbox" value="None" id="roundedOne" name="check" />
+            <label htmlFor="roundedOne">Only show products in stock</label>
+          </div>
+        </form>
+      </div>
+    );
+  }
+});
+
+React.render(
+  <FilterableProductTable />,
+  document.getElementById('content')
+);
