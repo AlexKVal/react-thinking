@@ -12,7 +12,7 @@ var FilterableProductTable = React.createClass({
     return (
       <div className="filterableProductTable">
         <SearchBar />
-        <ProductTable />
+        <ProductTable products={this.props.products} />
       </div>
     );
   }
@@ -67,6 +67,6 @@ var ProductRow = React.createClass({
 });
 
 React.render(
-  <FilterableProductTable />,
+  <FilterableProductTable products={data} />,
   document.getElementById('content')
 );
