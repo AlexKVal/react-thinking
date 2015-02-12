@@ -12,7 +12,7 @@ var FilterableProductTable = React.createClass({
     return (
       <div className="filterableProductTable">
         <SearchBar />
-        ProductTable
+        <ProductTable />
       </div>
     );
   }
@@ -29,6 +29,38 @@ var SearchBar = React.createClass({
             <label htmlFor="roundedOne">Only show products in stock</label>
           </div>
         </form>
+      </div>
+    );
+  }
+});
+
+var ProductTable = React.createClass({
+  render: function() {
+    return (
+      <div className="productTable">
+        <span>Name Price</span>
+        <ProductCategoryRow />
+        <ProductRow />
+      </div>
+    );
+  }
+});
+
+var ProductCategoryRow = React.createClass({
+  render: function() {
+    return (
+      <div className="productCategoryRow">
+        <span>Sporting Goods</span>
+      </div>
+    );
+  }
+});
+
+var ProductRow = React.createClass({
+  render: function() {
+    return (
+      <div className="productRow">
+        <span>Football $49.99</span>
       </div>
     );
   }
