@@ -36,32 +36,46 @@ var SearchBar = React.createClass({
 
 var ProductTable = React.createClass({
   render: function() {
+    var rows = [];
+    var lastCategory = null;
+    this.props.products.forEach(function(product) {
+      if (product.category !== lastCategory) {
+        rows.push(<ProductCategoryRow category={product.category} key={product.category} />);
+      }
+      rows.push(<ProductRow product={product} key={product.name} />);
+      lastCategory = product.category;
+    });
+
     return (
-      <div className="productTable">
-        <span>Name Price</span>
-        <ProductCategoryRow />
-        <ProductRow />
-      </div>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Price</th></tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
     );
   }
 });
 
 var ProductCategoryRow = React.createClass({
   render: function() {
-    return (
-      <div className="productCategoryRow">
-        <span>Sporting Goods</span>
-      </div>
-    );
+    return (<tr><th colSpan="2">{this.props.category}</th></tr>);
   }
 });
 
 var ProductRow = React.createClass({
   render: function() {
+    var name = this.props.product.stocked ?
+      this.props.product.name :
+      <span style={{color: 'orange'}}>
+        {this.props.product.name}
+      </span>;
+
     return (
-      <div className="productRow">
-        <span>Football $49.99</span>
-      </div>
+      <tr>
+        <td>{name}</td>
+        <td>{this.props.product.price}</td>
+      </tr>
     );
   }
 });
