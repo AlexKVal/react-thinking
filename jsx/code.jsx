@@ -8,11 +8,24 @@ var data = [
 ];
 
 var FilterableProductTable = React.createClass({
+  getInitialState: function() {
+    return {
+      filterText: '',
+      inStockOnly: false
+    };
+  },
+
   render: function() {
     return (
       <div className="filterableProductTable">
-        <SearchBar />
-        <ProductTable products={this.props.products} />
+        <SearchBar
+          filterText={this.state.filterText}
+          inStockOnly={this.state.inStockOnly}
+        />
+        <ProductTable products={this.props.products}
+          filterText={this.state.filterText}
+          inStockOnly={this.state.inStockOnly}
+        />
       </div>
     );
   }
@@ -23,9 +36,9 @@ var SearchBar = React.createClass({
     return (
       <div className="searchBar">
         <form>
-          <input type="text" placeholder="Search..." />
+          <input type="text" placeholder="Search..." valut={this.props.filterText} />
           <div className="roundedOne">
-            <input type="checkbox" value="None" id="roundedOne" name="check" />
+            <input type="checkbox" checked={this.props.inStockOnly} />
             <label htmlFor="roundedOne">Only show products in stock</label>
           </div>
         </form>
@@ -39,12 +52,16 @@ var ProductTable = React.createClass({
     var rows = [];
     var lastCategory = null;
     this.props.products.forEach(function(product) {
+      if (product.name.indexOf(this.props.filterText) === -1 || (!product.stocked && this.props.inStockOnly)) {
+        return;
+      }
+
       if (product.category !== lastCategory) {
         rows.push(<ProductCategoryRow category={product.category} key={product.category} />);
       }
       rows.push(<ProductRow product={product} key={product.name} />);
       lastCategory = product.category;
-    });
+    }.bind(this));
 
     return (
       <table>
