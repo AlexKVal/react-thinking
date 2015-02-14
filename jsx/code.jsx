@@ -24,7 +24,7 @@ var FilterableProductTable = React.createClass({
 
   render: function() {
     return (
-      <div className="filterableProductTable">
+      <div className="row">
         <SearchBar
           filterText={this.state.filterText}
           inStockOnly={this.state.inStockOnly}
@@ -51,17 +51,20 @@ var SearchBar = React.createClass({
       <div className="searchBar">
         <form>
           <input type="text" placeholder="Search..."
+            className="form-control"
+            autoFocus
             value={this.props.filterText}
             ref="textInput"
             onChange={this.onInputsChanges}
           />
-          <div className="roundedOne">
-            <input type="checkbox"
-              checked={this.props.inStockOnly}
-              ref="checkInput"
-              onChange={this.onInputsChanges}
-            />
-            <label htmlFor="roundedOne">Only show products in stock</label>
+          <div className="checkbox">
+            <label>
+              <input type="checkbox"
+                checked={this.props.inStockOnly}
+                ref="checkInput"
+                onChange={this.onInputsChanges}
+              /> Only show products in stock
+            </label>
           </div>
         </form>
       </div>

@@ -1,24 +1,4 @@
-body {
-  background: #555;
-  color: white;
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-input[type="text"] {
-  margin: 10px 0;
-  height: 18px;
-}
-
-input[type="checkbox"] {
-  margin: 0;
-  height: 14px;
-}
-
-label {
-  margin-left: 10px;
-}
-
-.productRow {
-  font-size: 14px;
+#content {
+  padding-top: 10px;
+  width: 200px;
 }
