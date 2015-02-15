@@ -50,7 +50,9 @@ var SearchBar = React.createClass({
     return (
       <div className="searchBar">
         <form>
-          <input type="text" placeholder="Search..."
+          <input
+            type="text"
+            placeholder="Search..."
             className="form-control"
             autoFocus
             value={this.props.filterText}
@@ -59,7 +61,8 @@ var SearchBar = React.createClass({
           />
           <div className="checkbox">
             <label>
-              <input type="checkbox"
+              <input
+                type="checkbox"
                 checked={this.props.inStockOnly}
                 ref="checkInput"
                 onChange={this.onInputsChanges}
@@ -89,9 +92,9 @@ var ProductTable = React.createClass({
     }.bind(this));
 
     return (
-      <table>
+      <table className="table table-striped table-hover">
         <thead>
-          <tr><th>Name</th><th>Price</th></tr>
+          <tr><th>Name</th><th><span className="pull-right">Price</span></th></tr>
         </thead>
         <tbody>{rows}</tbody>
       </table>
@@ -101,7 +104,7 @@ var ProductTable = React.createClass({
 
 var ProductCategoryRow = React.createClass({
   render: function() {
-    return (<tr><th colSpan="2">{this.props.category}</th></tr>);
+    return (<tr><th className="bg-warning" colSpan="2">{this.props.category}</th></tr>);
   }
 });
 
@@ -116,7 +119,7 @@ var ProductRow = React.createClass({
     return (
       <tr>
         <td>{name}</td>
-        <td>{this.props.product.price}</td>
+        <td><span className="pull-right">{this.props.product.price}</span></td>
       </tr>
     );
   }

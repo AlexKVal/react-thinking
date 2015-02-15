@@ -2,3 +2,7 @@
   padding-top: 10px;
   width: 200px;
 }
+
+label:hover {
+  background-color: lightgrey;
+}
