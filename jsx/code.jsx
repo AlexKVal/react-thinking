@@ -104,7 +104,7 @@ var ProductTable = React.createClass({
 
 var ProductCategoryRow = React.createClass({
   render: function() {
-    return (<tr><th className="bg-warning" colSpan="2">{this.props.category}</th></tr>);
+    return (<tr><th className="bg-warning text-center" colSpan="2">{this.props.category}</th></tr>);
   }
 });
 
