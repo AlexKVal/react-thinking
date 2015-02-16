@@ -112,7 +112,7 @@ var ProductRow = React.createClass({
   render: function() {
     var name = this.props.product.stocked ?
       this.props.product.name :
-      <span style={{color: 'orange'}}>
+      <span style={{color: 'darkorange'}}>
         {this.props.product.name}
       </span>;
 
